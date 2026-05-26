@@ -65,14 +65,14 @@ export default function JoinForm() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFBE7] text-[#2B1B17] flex flex-col justify-between relative overflow-hidden font-sans">
+    <div className="h-screen bg-[#FFFBE7] text-[#2B1B17] flex flex-col relative overflow-hidden font-sans">
       
       {/* Dynamic Background Graphics */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-[#FEB522]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-94 bg-[#DF4C08]/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* HEADER */}
-      <header className="p-6 max-w-4xl mx-auto w-full flex items-center justify-between z-10">
+      <header className="shrink-0 px-6 py-3 w-full flex items-center justify-between z-10">
         <Button 
           variant="ghost" 
           onClick={() => setLocation("/")}
@@ -91,27 +91,28 @@ export default function JoinForm() {
       </header>
 
       {/* FORM BODY */}
-      <main className="flex-1 flex items-center justify-center px-6 py-8 z-10">
+      <main className="flex-1 min-h-0 flex items-center justify-center px-[15vw] py-2 z-10 overflow-y-auto md:overflow-hidden">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="bg-white border-2 border-[#FEB522] rounded-3xl p-6 md:p-10 shadow-2xl max-w-2xl w-full"
+          className="bg-white border-2 border-[#FEB522] rounded-3xl p-5 md:p-6 shadow-2xl w-[70vw] max-w-[70vw] max-h-full overflow-hidden"
         >
-          <div className="text-center flex flex-col items-center gap-3 mb-8">
-            <div className="bg-[#DF4C08]/10 p-3 rounded-full text-[#DF4C08]">
-              <Sparkles className="w-6 h-6 animate-pulse" />
+          <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-5 lg:gap-8 items-start">
+          <div className="text-center lg:text-left flex flex-col items-center lg:items-start gap-2">
+            <div className="bg-[#DF4C08]/10 p-2 rounded-full text-[#DF4C08]">
+              <Sparkles className="w-5 h-5 animate-pulse" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-serif font-black text-[#DF4C08] tracking-tight">
+            <h1 className="text-2xl md:text-3xl font-serif font-black text-[#DF4C08] tracking-tight leading-tight">
               Rise to the Occasion!
             </h1>
-            <p className="text-sm md:text-base font-medium opacity-80 max-w-md">
+            <p className="text-xs md:text-sm font-medium opacity-80 leading-snug">
               Fill out this form to learn more about how you can volunteer, drop off bread, and nurture your local Washington community.
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <form onSubmit={handleSubmit} className="space-y-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {/* First Name */}
               <div className="flex flex-col gap-1.5">
                 <label className="text-xs font-black uppercase tracking-wider text-[#2B1B17]/80">First Name *</label>
@@ -122,7 +123,7 @@ export default function JoinForm() {
                   placeholder="Jane"
                   value={formData.firstName}
                   onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-[#FFFBE7]/20 transition-all font-medium text-sm"
+                  className="w-full px-3 py-2 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-[#FFFBE7]/20 transition-all font-medium text-sm"
                 />
               </div>
 
@@ -136,7 +137,7 @@ export default function JoinForm() {
                   placeholder="Doe"
                   value={formData.lastName}
                   onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-[#FFFBE7]/20 transition-all font-medium text-sm"
+                  className="w-full px-3 py-2 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-[#FFFBE7]/20 transition-all font-medium text-sm"
                 />
               </div>
             </div>
@@ -151,11 +152,11 @@ export default function JoinForm() {
                 placeholder="jane.doe@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-[#FFFBE7]/20 transition-all font-medium text-sm"
+                className="w-full px-3 py-2 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-[#FFFBE7]/20 transition-all font-medium text-sm"
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {/* Interest Level */}
               <div className="flex flex-col gap-1.5">
                 <label className="text-xs font-black uppercase tracking-wider text-[#2B1B17]/80">Interest Level (Optional)</label>
@@ -163,7 +164,7 @@ export default function JoinForm() {
                   name="interestLevel"
                   value={formData.interestLevel}
                   onChange={(e) => setFormData({ ...formData, interestLevel: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-white transition-all font-medium text-sm appearance-none"
+                  className="w-full px-3 py-2 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-white transition-all font-medium text-sm appearance-none"
                 >
                   <option value="high">🔥 I'm ready to start baking!</option>
                   <option value="medium">✨ I'd like more information first</option>
@@ -178,7 +179,7 @@ export default function JoinForm() {
                   name="bakingExperience"
                   value={formData.bakingExperience}
                   onChange={(e) => setFormData({ ...formData, bakingExperience: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-white transition-all font-medium text-sm appearance-none"
+                  className="w-full px-3 py-2 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-white transition-all font-medium text-sm appearance-none"
                 >
                   <option value="none">🥚 None (Ready to learn!)</option>
                   <option value="beginner">🍞 Beginner (Some bread/cookies)</option>
@@ -193,11 +194,11 @@ export default function JoinForm() {
               <label className="text-xs font-black uppercase tracking-wider text-[#2B1B17]/80">Your Message (Optional)</label>
               <textarea 
                 name="message"
-                rows={3}
+                rows={2}
                 placeholder="Tell us why you'd like to join or ask any questions you have!"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-[#FFFBE7]/20 transition-all font-medium text-sm resize-none"
+                className="w-full px-3 py-2 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-[#FFFBE7]/20 transition-all font-medium text-sm resize-none"
               />
             </div>
 
@@ -217,16 +218,17 @@ export default function JoinForm() {
             <Button 
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#DF4C08] hover:bg-[#DF4C08]/90 text-white font-black py-4 rounded-xl shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+              className="w-full bg-[#DF4C08] hover:bg-[#DF4C08]/90 text-white font-black py-2.5 rounded-xl shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
             >
               {isSubmitting ? "Submitting..." : <>Send Message <Send className="w-4 h-4" /></>}
             </Button>
           </form>
+          </div>
         </motion.div>
       </main>
 
       {/* GLOBAL FOOTER */}
-      <footer className="w-full py-6 px-6 md:px-12 border-t border-[#2B1B17]/10 relative z-10 bg-[#FFFBE7]">
+      <footer className="shrink-0 w-full py-3 px-6 md:px-12 border-t border-[#2B1B17]/10 relative z-10 bg-[#FFFBE7]">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-bold text-[#2B1B17]/60">
           
           <div className="flex items-center gap-2">
