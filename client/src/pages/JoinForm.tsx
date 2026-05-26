@@ -99,15 +99,14 @@ export default function JoinForm() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="bg-white border-2 border-[#FEB522] rounded-3xl p-5 md:p-6 shadow-2xl w-[70vw] max-w-[70vw] max-h-full overflow-hidden"
         >
-          <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-5 lg:gap-8 items-start">
-          <div className="text-center lg:text-left flex flex-col items-center lg:items-start gap-2">
+          <div className="text-center flex flex-col items-center gap-2 mb-5">
             <div className="bg-[#DF4C08]/10 p-2 rounded-full text-[#DF4C08]">
               <Sparkles className="w-5 h-5 animate-pulse" />
             </div>
             <h1 className="text-2xl md:text-3xl font-serif font-black text-[#DF4C08] tracking-tight leading-tight">
               Rise to the Occasion!
             </h1>
-            <p className="text-xs md:text-sm font-medium opacity-80 leading-snug">
+            <p className="text-xs md:text-sm font-medium opacity-80 leading-snug max-w-2xl">
               Fill out this form to learn more about how you can volunteer, drop off bread, and nurture your local Washington community.
             </p>
           </div>
@@ -224,7 +223,6 @@ export default function JoinForm() {
               {isSubmitting ? "Submitting..." : <>Send Message <Send className="w-4 h-4" /></>}
             </Button>
           </form>
-          </div>
         </motion.div>
       </main>
 
