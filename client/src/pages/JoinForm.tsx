@@ -253,12 +253,12 @@ export default function JoinForm() {
             <button 
               onClick={() => {
                 toast("Data Sources & References", {
-                  description: "Data compiled from: Northwest Harvest (2024-2025 Reports), University of Washington WAFOOD Wave 5 (2025), USDA ERS, Feeding America WA, and WSDA EFAP Reports.",
-                  duration: 6000,
-                  action: {
-                    label: "View Research",
-                    onClick: () => window.open("https://www.northwest-harvest.org/resources/key-facts-statistics/", "_blank")
-                  }
+                  description:
+                    "Data compiled from: Northwest Harvest (2024-2025 Reports), University of Washington WAFOOD Wave 5 (2025), USDA ERS, Feeding America WA, and WSDA EFAP Reports.",
+                  duration: 8000,
+                  classNames: {
+                    description: "!text-[#2B1B17]",
+                  },
                 });
               }}
               className="hover:underline flex items-center gap-1 hover:text-[#DF4C08] transition-colors"
