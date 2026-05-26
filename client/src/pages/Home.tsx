@@ -36,17 +36,18 @@ import {
   OFFICIAL_LOGO_URL,
 } from "../../../shared/const";
 import { Button } from "@/components/ui/button";
+import { publicAsset } from "@/lib/utils";
 import { toast } from "sonner";
 
-// Uploaded static asset URLs
+// Uploaded static asset URLs (under client/public/images/)
 /** Bake with us illustration (1024×1024) — slide 10 */
-const IMG_BAKE_WITH_US = "/images/girl-sit.png";
-const IMG_BAKE_DIFF = "/images/bake-diff.png";
+const IMG_BAKE_WITH_US = publicAsset("images/girl-sit.png");
+const IMG_BAKE_DIFF = publicAsset("images/bake-diff.png");
 /** Join us — It's as Easy as 1-2-3 (1024×576) */
-const IMG_JOIN_US = "/images/easy-123.png";
+const IMG_JOIN_US = publicAsset("images/easy-123.png");
 /** Three bakers illustration (1024×576) — slide 4 */
-const IMG_THREE_BAKERS = "/images/three-bakers.png";
-const IMG_GROCERY_CART = "/images/grocery-cart.svg";
+const IMG_THREE_BAKERS = publicAsset("images/three-bakers.png");
+const IMG_GROCERY_CART = publicAsset("images/grocery-cart.svg");
 
 // Interface for bread confetti items
 interface ConfettiItem {
