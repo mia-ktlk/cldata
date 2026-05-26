@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
-import { ChevronLeft, Wheat, Heart, Cookie, Send, Sparkles, ShieldCheck, Info } from "lucide-react";
+import { ChevronLeft, Send, Sparkles, ShieldCheck, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toggleSourcesToast } from "@/lib/sources-toast";
 import { toast } from "sonner";
@@ -66,56 +66,63 @@ export default function JoinForm() {
   };
 
   return (
-    <div className="h-screen bg-[#FFFBE7] text-[#2B1B17] flex flex-col relative overflow-hidden font-sans">
+    <div className="min-h-[100dvh] bg-[#FFFBE7] text-[#2B1B17] flex flex-col relative font-sans">
       
       {/* Dynamic Background Graphics */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-[#FEB522]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-94 bg-[#DF4C08]/5 rounded-full blur-3xl pointer-events-none" />
 
-      {/* HEADER */}
-      <header className="shrink-0 px-6 py-3 w-full flex items-center justify-between z-10">
-        <Button 
-          variant="ghost" 
+      {/* HEADER — compact on mobile */}
+      <header className="shrink-0 relative z-10 flex items-center justify-between gap-2 border-b border-[#2B1B17]/8 bg-[#FFFBE7]/90 px-3 py-1.5 md:px-6 md:py-2.5">
+        <Button
+          type="button"
+          variant="ghost"
           onClick={() => setLocation("/")}
-          className="text-[#2B1B17] hover:bg-[#2B1B17]/10 font-bold flex items-center gap-2 rounded-full px-4"
+          className="h-7 shrink-0 px-2 text-[11px] md:text-sm text-[#2B1B17] hover:bg-[#2B1B17]/10 font-bold flex items-center gap-0.5 rounded-full"
         >
-          <ChevronLeft className="w-5 h-5" /> Back
+          <ChevronLeft className="w-3.5 h-3.5 md:w-4 md:h-4" />
+          Back
         </Button>
-        <div className="flex items-center gap-2 font-serif font-bold text-lg text-[#DF4C08]">
+        <div className="flex min-w-0 items-center justify-center gap-1.5">
           <img
             src={OFFICIAL_LOGO_URL}
-            alt="Community Loaves Logo"
-            className="w-8 h-8 md:w-9 md:h-9 object-contain bg-white rounded-full p-0.5"
+            alt="Community Loaves"
+            className="h-5 w-5 shrink-0 object-contain md:h-7 md:w-7"
           />
-          <span>Community Loaves</span>
+          <span className="hidden font-serif text-xs font-bold text-[#DF4C08] sm:inline md:text-sm">
+            Community Loaves
+          </span>
         </div>
+        <div className="w-[52px] shrink-0 md:w-[60px]" aria-hidden />
       </header>
 
       {/* FORM BODY */}
-      <main className="flex-1 min-h-0 flex items-center justify-center px-[15vw] py-2 z-10 overflow-y-auto md:overflow-hidden">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+      <main className="relative z-10 flex-1 px-3 py-3 md:flex md:items-center md:justify-center md:px-[15vw] md:py-4">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="bg-white border-2 border-[#FEB522] rounded-3xl p-5 md:p-6 shadow-2xl w-[70vw] max-w-[70vw] max-h-full overflow-hidden"
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto w-full max-w-2xl rounded-2xl border-2 border-[#FEB522] bg-white p-4 shadow-xl md:w-[70vw] md:max-w-[70vw] md:rounded-3xl md:p-6 md:shadow-2xl"
         >
-          <div className="text-center flex flex-col items-center gap-2 mb-5">
-            <div className="bg-[#DF4C08]/10 p-2 rounded-full text-[#DF4C08]">
-              <Sparkles className="w-5 h-5 animate-pulse" />
+          <div className="mb-3 flex flex-col items-center gap-1 text-center md:mb-5 md:gap-2">
+            <div className="hidden bg-[#DF4C08]/10 p-1.5 rounded-full text-[#DF4C08] sm:block">
+              <Sparkles className="h-4 w-4 animate-pulse md:h-5 md:w-5" />
             </div>
-            <h1 className="text-2xl md:text-3xl font-serif font-black text-[#DF4C08] tracking-tight leading-tight">
+            <h1 className="font-serif text-base font-black leading-tight tracking-tight text-[#DF4C08] sm:text-lg md:text-2xl">
               Rise to the Occasion!
             </h1>
-            <p className="text-xs md:text-sm font-medium opacity-80 leading-snug max-w-2xl">
+            <p className="max-w-md text-[11px] font-medium leading-snug opacity-80 sm:text-xs md:text-sm">
               Fill out this form to learn more about how you can volunteer, drop off bread, and nurture your local Washington community.
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-3">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <form onSubmit={handleSubmit} className="space-y-2.5 md:space-y-3">
+            <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3">
               {/* First Name */}
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-black uppercase tracking-wider text-[#2B1B17]/80">First Name *</label>
+              <div className="flex flex-col gap-1">
+                <label className="text-[10px] font-black uppercase tracking-wide text-[#2B1B17]/80 sm:text-xs">
+                  First Name *
+                </label>
                 <input 
                   type="text" 
                   name="firstName"
@@ -123,13 +130,15 @@ export default function JoinForm() {
                   placeholder="Jane"
                   value={formData.firstName}
                   onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-[#FFFBE7]/20 transition-all font-medium text-sm"
+                  className="w-full min-h-10 rounded-lg border-2 border-[#FEB522]/30 bg-[#FFFBE7]/20 px-3 py-2 text-base font-medium transition-all focus:border-[#DF4C08] focus:outline-none sm:text-sm"
                 />
               </div>
 
               {/* Last Name */}
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-black uppercase tracking-wider text-[#2B1B17]/80">Last Name *</label>
+              <div className="flex flex-col gap-1">
+                <label className="text-[10px] font-black uppercase tracking-wide text-[#2B1B17]/80 sm:text-xs">
+                  Last Name *
+                </label>
                 <input 
                   type="text" 
                   name="lastName"
@@ -137,14 +146,16 @@ export default function JoinForm() {
                   placeholder="Doe"
                   value={formData.lastName}
                   onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-[#FFFBE7]/20 transition-all font-medium text-sm"
+                  className="w-full min-h-10 rounded-lg border-2 border-[#FEB522]/30 bg-[#FFFBE7]/20 px-3 py-2 text-base font-medium transition-all focus:border-[#DF4C08] focus:outline-none sm:text-sm"
                 />
               </div>
             </div>
 
             {/* Email */}
-            <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-black uppercase tracking-wider text-[#2B1B17]/80">Email Address *</label>
+            <div className="flex flex-col gap-1">
+              <label className="text-[10px] font-black uppercase tracking-wide text-[#2B1B17]/80 sm:text-xs">
+                Email Address *
+              </label>
               <input 
                 type="email" 
                 name="email"
@@ -152,19 +163,21 @@ export default function JoinForm() {
                 placeholder="jane.doe@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-[#FFFBE7]/20 transition-all font-medium text-sm"
+                className="w-full min-h-10 rounded-lg border-2 border-[#FEB522]/30 bg-[#FFFBE7]/20 px-3 py-2 text-base font-medium transition-all focus:border-[#DF4C08] focus:outline-none sm:text-sm"
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3">
               {/* Interest Level */}
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-black uppercase tracking-wider text-[#2B1B17]/80">Interest Level (Optional)</label>
+              <div className="flex flex-col gap-1">
+                <label className="text-[10px] font-black uppercase tracking-wide text-[#2B1B17]/80 sm:text-xs">
+                  Interest Level (Optional)
+                </label>
                 <select 
                   name="interestLevel"
                   value={formData.interestLevel}
                   onChange={(e) => setFormData({ ...formData, interestLevel: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-white transition-all font-medium text-sm appearance-none"
+                  className="w-full min-h-10 rounded-lg border-2 border-[#FEB522]/30 bg-white px-3 py-2 text-base font-medium transition-all appearance-none focus:border-[#DF4C08] focus:outline-none sm:text-sm"
                 >
                   <option value="high">🔥 I'm ready to start baking!</option>
                   <option value="medium">✨ I'd like more information first</option>
@@ -173,13 +186,15 @@ export default function JoinForm() {
               </div>
 
               {/* Baking Experience */}
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-black uppercase tracking-wider text-[#2B1B17]/80">Baking Experience (Optional)</label>
+              <div className="flex flex-col gap-1">
+                <label className="text-[10px] font-black uppercase tracking-wide text-[#2B1B17]/80 sm:text-xs">
+                  Baking Experience (Optional)
+                </label>
                 <select 
                   name="bakingExperience"
                   value={formData.bakingExperience}
                   onChange={(e) => setFormData({ ...formData, bakingExperience: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-white transition-all font-medium text-sm appearance-none"
+                  className="w-full min-h-10 rounded-lg border-2 border-[#FEB522]/30 bg-white px-3 py-2 text-base font-medium transition-all appearance-none focus:border-[#DF4C08] focus:outline-none sm:text-sm"
                 >
                   <option value="none">🥚 None (Ready to learn!)</option>
                   <option value="beginner">🍞 Beginner (Some bread/cookies)</option>
@@ -190,35 +205,39 @@ export default function JoinForm() {
             </div>
 
             {/* Message */}
-            <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-black uppercase tracking-wider text-[#2B1B17]/80">Your Message (Optional)</label>
-              <textarea 
+            <div className="flex flex-col gap-1">
+              <label className="text-[10px] font-black uppercase tracking-wide text-[#2B1B17]/80 sm:text-xs">
+                Your Message (Optional)
+              </label>
+              <textarea
                 name="message"
                 rows={2}
                 placeholder="Tell us why you'd like to join or ask any questions you have!"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl border-2 border-[#FEB522]/30 focus:border-[#DF4C08] focus:outline-none bg-[#FFFBE7]/20 transition-all font-medium text-sm resize-none"
+                className="w-full resize-none rounded-lg border-2 border-[#FEB522]/30 bg-[#FFFBE7]/20 px-3 py-2 text-base font-medium transition-all focus:border-[#DF4C08] focus:outline-none sm:text-sm"
               />
             </div>
 
             {/* Newsletter Toggle */}
-            <label className="flex items-center gap-3 cursor-pointer">
-              <input 
-                type="checkbox" 
+            <label className="flex cursor-pointer items-start gap-2.5 sm:items-center sm:gap-3">
+              <input
+                type="checkbox"
                 name="receiveNewsletter"
                 checked={formData.receiveNewsletter}
                 onChange={(e) => setFormData({ ...formData, receiveNewsletter: e.target.checked })}
-                className="w-4 h-4 rounded border-[#FEB522]/30 text-[#DF4C08] focus:ring-[#DF4C08] accent-[#DF4C08]"
+                className="mt-0.5 h-4 w-4 shrink-0 rounded border-[#FEB522]/30 text-[#DF4C08] accent-[#DF4C08] focus:ring-[#DF4C08] sm:mt-0"
               />
-              <span className="text-xs font-bold opacity-80">Send me updates on local baking schedules and hub events</span>
+              <span className="text-[11px] font-bold leading-snug opacity-80 sm:text-xs">
+                Send me updates on local baking schedules and hub events
+              </span>
             </label>
 
             {/* Submit Button */}
-            <Button 
+            <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#DF4C08] hover:bg-[#DF4C08]/90 text-white font-black py-2.5 rounded-xl shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#DF4C08] py-3 text-sm font-black text-white shadow-lg transition-all hover:bg-[#DF4C08]/90 hover:scale-[1.01] active:scale-[0.99] md:rounded-xl md:py-2.5"
             >
               {isSubmitting ? "Submitting..." : <>Send Message <Send className="w-4 h-4" /></>}
             </Button>
@@ -227,19 +246,18 @@ export default function JoinForm() {
       </main>
 
       {/* GLOBAL FOOTER */}
-      <footer className="shrink-0 w-full py-3 px-6 md:px-12 border-t border-[#2B1B17]/10 relative z-10 bg-[#FFFBE7]">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-bold text-[#2B1B17]/60">
-          
-          <div className="flex items-center gap-2">
+      <footer className="relative z-10 shrink-0 w-full border-t border-[#2B1B17]/10 bg-[#FFFBE7] px-3 py-2 md:px-12 md:py-3">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 text-[10px] font-bold text-[#2B1B17]/60 sm:flex-row sm:gap-4 sm:text-xs">
+          <div className="flex items-center gap-1.5">
             <img
               src={OFFICIAL_LOGO_URL}
-              alt="Community Loaves Logo"
-              className="w-5 h-5 md:w-6 md:h-6 object-contain"
+              alt=""
+              className="h-3.5 w-3.5 object-contain md:h-5 md:w-5"
             />
-            <span className="opacity-80">© 2026 Community Loaves. All rights reserved.</span>
+            <span className="opacity-80">© 2026 Community Loaves</span>
           </div>
 
-          <div className="flex items-center gap-4 md:gap-6">
+          <div className="flex items-center gap-3 md:gap-6">
             {/* Privacy Policy Link */}
             <a 
               href="https://communityloaves.org/privacy-policy/" 
