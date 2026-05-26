@@ -3,10 +3,10 @@ import react from "@vitejs/plugin-react";
 import path from "node:path";
 import { defineConfig } from "vite";
 
-/** GitHub Pages project sites are served from /{repo}/ */
-const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1];
-const base =
-  process.env.GITHUB_ACTIONS && repoName ? `/${repoName}/` : "/";
+/** GitHub Pages: https://mia-ktlk.github.io/cldata/ */
+const isGitHubPagesBuild =
+  process.env.CLDATA_PAGES === "true" || process.env.GITHUB_ACTIONS === "true";
+const base = isGitHubPagesBuild ? "/cldata/" : "/";
 
 export default defineConfig({
   base,

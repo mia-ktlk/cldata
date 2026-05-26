@@ -35,9 +35,11 @@ jobs:
 
       - name: Build static site
         run: pnpm run build:pages
-        env:
-          GITHUB_ACTIONS: true
-          GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - name: Verify GitHub Pages asset paths
+        run: |
+          grep -q 'src="/cldata/assets/' dist/public/index.html
+          grep -q 'href="/cldata/assets/' dist/public/index.html
 
       - name: Add SPA fallback for client-side routes
         run: cp dist/public/index.html dist/public/404.html
