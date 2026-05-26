@@ -42,7 +42,7 @@ import { toast } from "sonner";
 
 // Uploaded static asset URLs (under client/public/images/)
 /** Bake with us illustration (1024×1024) — slide 10 */
-const IMG_BAKE_WITH_US = publicAsset("images/girl-sit.webp");
+const IMG_BAKE_WITH_US = publicAsset("images/GirlSit.webp");
 const IMG_BAKE_DIFF = publicAsset("images/bake-diff.png");
 /** Join us — It's as Easy as 1-2-3 (1024×576) */
 const IMG_JOIN_US = publicAsset("images/easy-123.webp");
