@@ -3,10 +3,10 @@ import react from "@vitejs/plugin-react";
 import path from "node:path";
 import { defineConfig } from "vite";
 
-/** GitHub Pages: https://mia-ktlk.github.io/cldata/ */
-const isGitHubPagesBuild =
+/** Production deploy uses custom domain at site root (https://communityloaves.fyi/) */
+const isProductionBuild =
   process.env.CLDATA_PAGES === "true" || process.env.GITHUB_ACTIONS === "true";
-const base = isGitHubPagesBuild ? "/cldata/" : "/";
+const base = isProductionBuild ? "/" : "/";
 
 export default defineConfig({
   base,
