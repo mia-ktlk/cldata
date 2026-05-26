@@ -1,0 +1,13 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "name": "community-loaves-hunger",
+  "path": "/home/ubuntu/community-loaves-hunger",
+  "port": 3000,
+  "secrets": {},
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}
