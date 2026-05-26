@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { ChevronLeft, Wheat, Heart, Cookie, Send, Sparkles, ShieldCheck, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toggleSourcesToast } from "@/lib/sources-toast";
 import { toast } from "sonner";
 import { OFFICIAL_LOGO_URL } from "@shared/const";
 
@@ -252,17 +253,9 @@ export default function JoinForm() {
             </a>
 
             {/* Sources Trigger */}
-            <button 
-              onClick={() => {
-                toast("Data Sources & References", {
-                  description:
-                    "Data compiled from: Northwest Harvest (2024-2025 Reports), University of Washington WAFOOD Wave 5 (2025), USDA ERS, Feeding America WA, and WSDA EFAP Reports.",
-                  duration: 8000,
-                  classNames: {
-                    description: "!text-[#2B1B17]",
-                  },
-                });
-              }}
+            <button
+              type="button"
+              onClick={toggleSourcesToast}
               className="hover:underline flex items-center gap-1 hover:text-[#DF4C08] transition-colors"
             >
               <Info className="w-3.5 h-3.5" /> Sources

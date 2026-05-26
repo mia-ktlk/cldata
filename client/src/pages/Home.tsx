@@ -36,6 +36,7 @@ import {
   OFFICIAL_LOGO_URL,
 } from "../../../shared/const";
 import { Button } from "@/components/ui/button";
+import { toggleSourcesToast } from "@/lib/sources-toast";
 import { publicAsset } from "@/lib/utils";
 import { toast } from "sonner";
 
@@ -1396,7 +1397,7 @@ export default function Home() {
                       size="lg"
                       className="bg-[#DF4C08] hover:bg-[#DF4C08]/90 text-white text-xs md:text-sm font-black rounded-full px-4 py-2.5 md:px-5 md:py-3 shadow-2xl shadow-black/20 flex items-center gap-2 hover:scale-105 active:scale-95 transition-all w-fit"
                     >
-                      Fill Out the Form <ArrowRight className="w-4 h-4" />
+                      Learn More! <ArrowRight className="w-4 h-4" />
                     </Button>
                   </div>
 
@@ -1490,17 +1491,9 @@ export default function Home() {
             </a>
 
             {/* Sources Trigger */}
-            <button 
-              onClick={() => {
-                toast("Data Sources & References", {
-                  description:
-                    "Data compiled from: Northwest Harvest (2024-2025 Reports), University of Washington WAFOOD Wave 5 (2025), USDA ERS, Feeding America WA, and WSDA EFAP Reports.",
-                  duration: 8000,
-                  classNames: {
-                    description: "!text-[#2B1B17]",
-                  },
-                });
-              }}
+            <button
+              type="button"
+              onClick={toggleSourcesToast}
               className="hover:underline flex items-center gap-1 hover:text-[#DF4C08] transition-colors"
             >
               <Info className="w-3.5 h-3.5" /> Sources

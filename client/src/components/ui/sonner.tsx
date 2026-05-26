@@ -7,15 +7,21 @@ const Toaster = ({ ...props }: ToasterProps) => {
   return (
     <Sonner
       theme={theme as ToasterProps["theme"]}
+      closeButton
       className="toaster group"
       toastOptions={{
         classNames: {
-          toast: "group toast bg-white text-[#2B1B17] border-2 border-[#FEB522]/30 shadow-2xl rounded-2xl p-4 font-sans",
+          toast:
+            "group toast relative bg-white text-[#2B1B17] border-2 border-[#FEB522]/30 shadow-2xl rounded-2xl p-4 pr-12 font-sans",
           title: "text-[#2B1B17] font-black text-sm uppercase tracking-wide",
           description: "text-[#2B1B17] font-medium text-xs leading-relaxed mt-1",
-          actionButton: "bg-[#DF4C08] hover:bg-[#DF4C08]/90 text-white font-bold text-xs rounded-xl px-3 py-1.5 transition-all shadow-md",
-          cancelButton: "bg-neutral-100 hover:bg-neutral-200 text-[#2B1B17] font-bold text-xs rounded-xl px-3 py-1.5 transition-all",
-        }
+          closeButton:
+            "absolute right-3 top-3 border-0 bg-[#2B1B17]/10 text-[#2B1B17] hover:bg-[#2B1B17]/20 rounded-full w-7 h-7 transition-colors",
+          actionButton:
+            "bg-[#DF4C08] hover:bg-[#DF4C08]/90 text-white font-bold text-xs rounded-xl px-3 py-1.5 transition-all shadow-md",
+          cancelButton:
+            "bg-neutral-100 hover:bg-neutral-200 text-[#2B1B17] font-bold text-xs rounded-xl px-3 py-1.5 transition-all",
+        },
       }}
       style={
         {
